@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 
 public class Cat extends Sprite{
 	// Just need one random generator shared
-	// by all the boxes (so make it static)
 	static Random rng = new Random();
 
 	int x, y;   // top-left corner
@@ -15,9 +14,8 @@ public class Cat extends Sprite{
 	int vx, vy; // velocity vector
 
 	public Cat(){
-		// Choose random size and movement
-		w = 20 + rng.nextInt(51);
-		h = 20 + rng.nextInt(51);
+		w = 60;
+		h = 60;
 		vx = 2 + rng.nextInt(7);
 		if (rng.nextDouble() < 0.5)
 			vx = -vx;
