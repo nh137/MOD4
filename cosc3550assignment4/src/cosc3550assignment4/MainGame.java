@@ -29,6 +29,7 @@ public class MainGame extends Application{
 	
 	void initialize(){
 		mouse = new Mouse();
+		 Cat cat = new Cat();
 	}
 	
 	void setHandlers(Scene scene){
