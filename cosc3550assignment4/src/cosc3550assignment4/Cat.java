@@ -12,6 +12,7 @@ public class Cat extends Sprite{
 	int x, y;   // top-left corner
 	int w, h;   // width and height
 	int vx, vy; // velocity vector
+	int health = 2;
 
 	public Cat(){
 		w = 60;
@@ -84,6 +85,10 @@ public class Cat extends Sprite{
 	public void render(GraphicsContext gc){
 		gc.setFill(Color.BLACK);
 		gc.fillRect(x,  y,  w,  h);
+	}
+	
+	public void loseHealth(){
+		health--;
 	}
 }
 

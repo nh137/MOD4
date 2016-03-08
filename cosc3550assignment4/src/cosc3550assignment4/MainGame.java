@@ -11,6 +11,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -24,16 +26,21 @@ public class MainGame extends Application{
 	public static final int DYING = 80;
 	public static float BBscale = 1.0f;
 	
+	boolean lostGame = false;
+	boolean wonGame = false;
+	
+	Font font = Font.font("TimesRoman", FontPosture.ITALIC, 60.0);
+	
 	Mouse mouse;
 	Cat cat;
 	Cat cat1;
 	ArrayList<Cat> cats;
-	int count = 1000;
+	int count = 10000;
 	
 	void initialize(){
 		cats = new ArrayList<Cat>();
 		mouse = new Mouse();
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 2; i++){
 			cat = new Cat();
 			cats.add(cat);
 		}	
@@ -83,7 +90,7 @@ public class MainGame extends Application{
 		while(mouse.invulnerable){
 			count--;
 			if(count == 0){
-				count = 1000;
+				count = 10000;
 				mouse.invulnerable = false;
 			}
 		}
@@ -104,11 +111,25 @@ public class MainGame extends Application{
 				if(cats.get(i).overlaps(cats.get(j))){
 					cats.get(i).reverse();
 					cats.get(j).reverse();
+					cats.get(i).loseHealth();
+					cats.get(j).loseHealth();
+				}
+				if(cats.get(i).health == 0){
+					cats.remove(i);
+				}
+				if(cats.get(j).health == 0){
+					cats.remove(j);
 				}
 			}
+			if(cats.get(i).health == 0){
+				cats.remove(i);
+			}
+		}
+		if(cats.isEmpty()){
+			wonGame = true;
 		}
 		if(mouse.health == 0){
-			System.exit(0);
+			lostGame = true;
 		}
 	}
 	
@@ -124,24 +145,20 @@ public class MainGame extends Application{
 			cats.get(i).render(gc);
 		}
 		//System.out.println("Begin scenery");
-		/*for (Sprite s: cats)
-		{
-			s.render(gc, boxDebug);
-		}
-
-		if (wonGame())
+		
+		if (wonGame)
 		{
 			gc.setFill(Color.BLACK);
 			gc.setFont(font);
 			gc.fillText("You win!",200,200);
 		}
 
-		if (lostGame())
+		if (lostGame)
 		{
 			gc.setFill(Color.BLACK);
 			gc.setFont(font);
 			gc.fillText("You lose.",200,200);
-		}*/
+		}
 		
 	}
 	/*

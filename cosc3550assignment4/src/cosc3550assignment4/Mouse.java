@@ -12,7 +12,7 @@ public class Mouse {
 
 	final static int WIDTH = 40;
 	final static int HEIGHT = 40;
-	final static int SPEED = 2;
+	final static int SPEED = 1;
 
 	public Mouse(){
 		x = (int) (MainGame.WIDTH/2);
