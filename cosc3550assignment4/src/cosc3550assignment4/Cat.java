@@ -11,8 +11,9 @@ public class Cat extends Sprite{
 
 	int x, y;   // top-left corner
 	int w, h;   // width and height
-	int vx, vy; // velocity vector
+	double vx, vy; // velocity vector
 	int health = 1;
+	int speed = 2;
 
 	public Cat(){
 		w = 60;
@@ -95,7 +96,8 @@ public class Cat extends Sprite{
 		double vx = m.x - x;
 		double vy = m.y - y;
 		double len = Math.sqrt(vx*vx+vy*vy);
-		setVelocity(vx/len, vy/len);
+		this.vx = vx*speed/len;
+		this.vy =  vy*speed/len;
 	}
 }
 
