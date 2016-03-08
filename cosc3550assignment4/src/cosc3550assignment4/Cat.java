@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 
 public class Cat extends Sprite{
 	// Just need one random generator shared
-	// by all the boxes (so make it static)
 	static Random rng = new Random();
 
 	int x, y;   // top-left corner
@@ -15,9 +14,8 @@ public class Cat extends Sprite{
 	int vx, vy; // velocity vector
 
 	public Cat(){
-		// Choose random size and movement
-		w = 20 + rng.nextInt(51);
-		h = 20 + rng.nextInt(51);
+		w = 60;
+		h = 60;
 		vx = 2 + rng.nextInt(7);
 		if (rng.nextDouble() < 0.5)
 			vx = -vx;
@@ -42,19 +40,20 @@ public class Cat extends Sprite{
 			vy = -vy;
 	}
 
-	public boolean overlaps(Cat b){
+	public boolean overlaps(Cat c){
 		int y1 = y;
 		int x1 = x;
 		int h1 = h;
 		int w1 = w;
-		int y2 = b.y;
-		int x2 = b.x;
-		int h2 = b.h;
-		int w2 = b.w;
+
+		int y2 = c.y;
+		int x2 = c.x;
+		int h2 = c.h;
+		int w2 = c.w;
 
 		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
 			this.reverse();
-			b.reverse();
+			c.reverse();
 		}
 
 		return false;

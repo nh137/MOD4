@@ -33,9 +33,8 @@ public class Mouse {
 			vx = -vx;
 		if (y < 0)
 			vy = -vy;
-		/*if(y+HEIGHT > AnimationInteraction.HEIGHT)
-			   vy = -vy;*/
-			   vy = vy + 1;
+		if(y+HEIGHT > MainGame.HEIGHT)
+			vy = -vy;
 	}
 
 	public void reset(){
