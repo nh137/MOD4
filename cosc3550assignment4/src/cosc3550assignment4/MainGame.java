@@ -26,6 +26,8 @@ public class MainGame extends Application{
 	public static final int DYING = 80;
 	public static float BBscale = 1.0f;
 	
+	GraphicsContext gc;
+	
 	boolean lostGame = false;
 	boolean wonGame = false;
 	
@@ -35,12 +37,13 @@ public class MainGame extends Application{
 	Cat cat;
 	Cat cat1;
 	ArrayList<Cat> cats;
-	int count = 10000;
+	int level = 1;
+	int count = 100;
 	
 	void initialize(){
 		cats = new ArrayList<Cat>();
 		mouse = new Mouse();
-		for(int i = 0; i < 2; i++){
+		for(int i = 0; i < (level*2); i++){
 			cat = new Cat();
 			cats.add(cat);
 		}	
@@ -90,7 +93,7 @@ public class MainGame extends Application{
 		while(mouse.invulnerable){
 			count--;
 			if(count == 0){
-				count = 10000;
+				count = 100;
 				mouse.invulnerable = false;
 			}
 		}
@@ -126,6 +129,13 @@ public class MainGame extends Application{
 			}
 		}
 		if(cats.isEmpty()){
+			level++;
+			for(int i = 0; i < (level*2); i++){
+				cat = new Cat();
+				cats.add(cat);
+			}
+		}
+		if(level == 4){
 			wonGame = true;
 		}
 		if(mouse.health == 0){
@@ -180,7 +190,7 @@ public class MainGame extends Application{
 		Canvas canvas = new Canvas(WIDTH, HEIGHT);
 		root.getChildren().add(canvas);
 
-		GraphicsContext gc = canvas.getGraphicsContext2D();
+		gc = canvas.getGraphicsContext2D();
 
 		// Initial setup
 		initialize();

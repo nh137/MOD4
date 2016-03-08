@@ -12,7 +12,7 @@ public class Cat extends Sprite{
 	int x, y;   // top-left corner
 	int w, h;   // width and height
 	int vx, vy; // velocity vector
-	int health = 2;
+	int health = 1;
 
 	public Cat(){
 		w = 60;
@@ -55,7 +55,6 @@ public class Cat extends Sprite{
 		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
 			return true;
 		}
-
 		return false;
 	}
 	
