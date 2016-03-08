@@ -22,11 +22,14 @@ public class MainGame extends Application{
 	final static double WIDTH = 800;
 	final static double HEIGHT = 600;
 	public static final int DYING = 80;
-
+	public static float BBscale = 1.0f;
+	
 	Mouse mouse;
 	ArrayList<Cat> cats;
 	
-	public static float BBscale = 1.0f;
+	void initialize(){
+		mouse = new Mouse();
+	}
 	
 	void setHandlers(Scene scene){
 		scene.setOnKeyPressed(
@@ -73,7 +76,7 @@ public class MainGame extends Application{
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0.0, 0.0, WIDTH, HEIGHT);
 		//System.out.println("Begin scenery");
-		for (Sprite s: cats)
+		/*for (Sprite s: cats)
 		{
 			s.render(gc, boxDebug);
 		}
@@ -90,7 +93,7 @@ public class MainGame extends Application{
 			gc.setFill(Color.BLACK);
 			gc.setFont(font);
 			gc.fillText("You lose.",200,200);
-		}
+		}*/
 		
 	}
 	/*

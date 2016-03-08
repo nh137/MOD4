@@ -1,5 +1,8 @@
 package cosc3550assignment4;
 
+import javafx.scene.paint.Color;
+import javafx.scene.canvas.GraphicsContext;
+
 public class Mouse {
 	int x, y, vx, vy; 
 
@@ -10,8 +13,8 @@ public class Mouse {
 	final static int SPEED = 2;
 
 	public Mouse(){
-		x = MainGame.WIDTH/2;
-		y = MainGame.HEIGHT/4;
+		x = (int) (MainGame.WIDTH/2);
+		y = (int) (MainGame.HEIGHT/4);
 		vx = 0;
 		vy = 0;
 	}
@@ -38,8 +41,8 @@ public class Mouse {
 	}
 
 	public void reset(){
-		x = MainGame.WIDTH/2;
-		y = MainGame.HEIGHT/4;
+		x = (int) (MainGame.WIDTH/2);
+		y = (int) (MainGame.HEIGHT/4);
 		vx = 0;
 		vy = 0;
 	}
