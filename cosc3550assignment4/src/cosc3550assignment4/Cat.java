@@ -23,8 +23,8 @@ public class Cat extends Sprite{
 		if (rng.nextDouble() < 0.5)
 			vy = -vy;
 		// Choose random position on the Canvas
-		x = 5 + rng.nextInt(MainGame.WIDTH - w - 10);
-		y = 5 + rng.nextInt(MainGame.HEIGHT - h - 10);
+		x = 5 + rng.nextInt((int) (MainGame.WIDTH - w - 10));
+		y = 5 + rng.nextInt((int) (MainGame.HEIGHT - h - 10));
 	}
 
 	public void move(){
@@ -40,15 +40,15 @@ public class Cat extends Sprite{
 			vy = -vy;
 	}
 
-	public boolean overlaps(Box b){
+	public boolean overlaps(Cat c){
 		int y1 = y;
 		int x1 = x;
 		int h1 = h;
 		int w1 = w;
-		int y2 = b.y;
-		int x2 = b.x;
-		int h2 = b.HEIGHT;
-		int w2 = b.WIDTH;
+		int y2 = c.y;
+		int x2 = c.x;
+		int h2 = c.h;
+		int w2 = c.w;
 
 		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
 			return true;
