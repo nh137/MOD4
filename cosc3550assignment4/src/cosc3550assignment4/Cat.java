@@ -89,5 +89,13 @@ public class Cat extends Sprite{
 	public void loseHealth(){
 		health--;
 	}
+	
+	public void headTo(Mouse m)
+	{
+		double vx = m.x - x;
+		double vy = m.y - y;
+		double len = Math.sqrt(vx*vx+vy*vy);
+		setVelocity(vx/len, vy/len);
+	}
 }
 

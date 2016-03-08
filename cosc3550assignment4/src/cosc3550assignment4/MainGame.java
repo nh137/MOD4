@@ -35,10 +35,9 @@ public class MainGame extends Application{
 	
 	Mouse mouse;
 	Cat cat;
-	Cat cat1;
 	ArrayList<Cat> cats;
 	int level = 1;
-	int count = 100;
+	int count = 100;	// invincibility time variable
 	
 	void initialize(){
 		cats = new ArrayList<Cat>();
@@ -99,6 +98,7 @@ public class MainGame extends Application{
 		}
 		for(int i = 0; i < cats.size(); i++){
 			cats.get(i).move();
+			cats.get(i).headTo(mouse);
 			if(cats.get(i).overlaps(mouse)){
 				if(!mouse.invulnerable){
 					mouse.invulnerable = true;
@@ -109,7 +109,7 @@ public class MainGame extends Application{
 				}
 			}
 		}
-		for (int i = 1; i < cats.size(); i++){
+		for (int i = 0; i < cats.size(); i++){
 			for (int j = 0; j < i; j++){
 				if(cats.get(i).overlaps(cats.get(j))){
 					cats.get(i).reverse();

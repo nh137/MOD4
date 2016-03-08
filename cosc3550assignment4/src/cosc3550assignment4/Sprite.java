@@ -70,4 +70,5 @@ class Sprite
 		double bbh = (height*MainGame.BBscale);
 		return new BoundingBox(x+xoff, y+yoff, bbw, bbh);
 	}
+  
 }
