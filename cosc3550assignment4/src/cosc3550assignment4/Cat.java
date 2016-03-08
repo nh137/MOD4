@@ -45,15 +45,15 @@ public class Cat extends Sprite{
 		int x1 = x;
 		int h1 = h;
 		int w1 = w;
+
 		int y2 = c.y;
 		int x2 = c.x;
 		int h2 = c.h;
 		int w2 = c.w;
 
 		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
-			return true;
-			//vx = -vx;
-			//b.vx = -b.vx;
+			this.reverse();
+			c.reverse();
 		}
 
 		return false;
