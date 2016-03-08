@@ -25,11 +25,17 @@ public class MainGame extends Application{
 	public static float BBscale = 1.0f;
 	
 	Mouse mouse;
+	Cat cat;
+	Cat cat1;
 	ArrayList<Cat> cats;
 	
 	void initialize(){
+		cats = new ArrayList<Cat>();
 		mouse = new Mouse();
-		 Cat cat = new Cat();
+		for(int i = 0; i < 5; i++){
+			cat = new Cat();
+			cats.add(cat);
+		}	
 	}
 	
 	void setHandlers(Scene scene){
@@ -70,12 +76,36 @@ public class MainGame extends Application{
 		);
 	}
 	
+	private void update() {
+		// TODO Auto-generated method stub
+		mouse.move();
+		for(int i = 0; i < cats.size(); i++){
+			cats.get(i).move();
+			if(cats.get(i).overlaps(mouse)){
+				mouse.reverse();
+				cats.get(i).reverse();
+			}
+		}
+		for (int i = 1; i < cats.size(); i++){
+			for (int j = 0; j < i; j++){
+				if(cats.get(i).overlaps(cats.get(j))){
+					cats.get(i).reverse();
+					cats.get(j).reverse();
+				}
+			}
+		}			
+	}
+	
 	/**
 	 *  Draw the game world
 	 */
 	void render(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0.0, 0.0, WIDTH, HEIGHT);
+		mouse.render(gc);
+		for(int i = 0; i < cats.size(); i++){
+			cats.get(i).render(gc);
+		}
 		//System.out.println("Begin scenery");
 		/*for (Sprite s: cats)
 		{
@@ -140,4 +170,6 @@ public class MainGame extends Application{
 	/*
 	 * ... End boiler-plate code
 	 */
+
+	
 }

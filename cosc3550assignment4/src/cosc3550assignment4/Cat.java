@@ -58,6 +58,25 @@ public class Cat extends Sprite{
 
 		return false;
 	}
+	
+	public boolean overlaps(Mouse m){
+		int y1 = y;
+		int x1 = x;
+		int h1 = h;
+		int w1 = w;
+
+		int y2 = m.y;
+		int x2 = m.x;
+		int h2 = m.HEIGHT;
+		int w2 = m.WIDTH;
+
+		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
+			this.reverse();
+			m.reverse();
+		}
+
+		return false;
+	}
 
 	public void reverse(){
 		vx = -vx;
