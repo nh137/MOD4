@@ -52,8 +52,7 @@ public class Cat extends Sprite{
 		int w2 = c.w;
 
 		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
-			this.reverse();
-			c.reverse();
+			return true;
 		}
 
 		return false;
@@ -71,8 +70,7 @@ public class Cat extends Sprite{
 		int w2 = m.WIDTH;
 
 		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
-			this.reverse();
-			m.reverse();
+			return true;
 		}
 
 		return false;

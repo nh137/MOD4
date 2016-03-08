@@ -4,9 +4,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Mouse {
-	int x, y, vx, vy; 
+	int x, y, vx, vy, health; 
 
 	boolean upKey = false, downKey = false, leftKey = false, rightKey = false;
+
+	public boolean invulnerable = false;
 
 	final static int WIDTH = 40;
 	final static int HEIGHT = 40;
@@ -17,6 +19,7 @@ public class Mouse {
 		y = (int) (MainGame.HEIGHT/4);
 		vx = 0;
 		vy = 0;
+		health = 50;
 	}
 
 	public void move(){
@@ -53,8 +56,15 @@ public class Mouse {
 	}
 
 	public void render(GraphicsContext gc){
-		gc.setFill(Color.BLUE);
-		gc.fillRect(x, y, WIDTH, HEIGHT);
+		if(!invulnerable){
+			gc.setFill(Color.BLUE);
+			gc.fillRect(x, y, WIDTH, HEIGHT);
+		}
+		else{
+			gc.setFill(Color.RED);
+			gc.fillRect(x, y, WIDTH, HEIGHT);
+		}
+		
 	}
 
 	public void setUpKey(Boolean val){
@@ -83,5 +93,9 @@ public class Mouse {
 
 	public int getBottom(){
 		return y+HEIGHT;
+	}
+	
+	public void loseHealth(){
+		health--;
 	}
 }

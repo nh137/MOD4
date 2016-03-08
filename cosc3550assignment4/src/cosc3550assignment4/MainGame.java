@@ -28,6 +28,7 @@ public class MainGame extends Application{
 	Cat cat;
 	Cat cat1;
 	ArrayList<Cat> cats;
+	int count = 1000;
 	
 	void initialize(){
 		cats = new ArrayList<Cat>();
@@ -79,11 +80,23 @@ public class MainGame extends Application{
 	private void update() {
 		// TODO Auto-generated method stub
 		mouse.move();
+		while(mouse.invulnerable){
+			count--;
+			if(count == 0){
+				count = 1000;
+				mouse.invulnerable = false;
+			}
+		}
 		for(int i = 0; i < cats.size(); i++){
 			cats.get(i).move();
 			if(cats.get(i).overlaps(mouse)){
-				mouse.reverse();
-				cats.get(i).reverse();
+				if(!mouse.invulnerable){
+					mouse.invulnerable = true;
+					mouse.loseHealth();
+				}
+				else{
+					
+				}
 			}
 		}
 		for (int i = 1; i < cats.size(); i++){
@@ -93,12 +106,16 @@ public class MainGame extends Application{
 					cats.get(j).reverse();
 				}
 			}
-		}			
+		}
+		if(mouse.health == 0){
+			System.exit(0);
+		}
 	}
 	
 	/**
 	 *  Draw the game world
 	 */
+	
 	void render(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0.0, 0.0, WIDTH, HEIGHT);
