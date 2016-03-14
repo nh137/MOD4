@@ -4,64 +4,55 @@ import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-class Sprite
-{
-  double x,y;
-  double dx,dy;
-  public static final double GRAVITY = 2.0;
-  
-  Image image;
+class Sprite{
+	double x,y;
+	double dx,dy;
+	public static final double GRAVITY = 2.0;
 
-  boolean active=false, visible=false;
+	Image image;
 
-  void updatePosition()
-  {
-  	x += dx;
-  	y += dy;
+	boolean active=false, visible=false;
 
-  	dy += GRAVITY;
-  }
+	void updatePosition(){
+		x += dx;
+		y += dy;
 
-  void setPosition(double x2, double y2)
-  {
-  	x = x2; y = y2;
-  }
+		dy += GRAVITY;
+	}
 
-  void setVelocity(double a, double b)
-  {
-    dx = a; dy = b;
-  }
+	void setPosition(double x2, double y2){
+		x = x2; y = y2;
+	}
 
-  boolean isCloserThan(Sprite s, double dist)
-  {
-  	// Return true if Sprite s is closer to
-  	// the current Sprite (this) than specified
-  	// distance dist.
-    double dx = x-s.x;
-    double dy = y-s.y;
-    return dx*dx+dy*dy < dist*dist;
-  }
+	void setVelocity(double a, double b){
+		dx = a; dy = b;
+	}
 
-  boolean isActive()
-  {
-  	return active;
-  }
+	boolean isCloserThan(Sprite s, double dist){
+		// Return true if Sprite s is closer to
+		// the current Sprite (this) than specified
+		// distance dist.
+		double dx = x-s.x;
+		double dy = y-s.y;
+		return dx*dx+dy*dy < dist*dist;
+	}
 
-  void suspend()
-  {
-    active = false; visible = false;
-  }
+	boolean isActive(){
+		return active;
+	}
 
-  void resume()
-  {
-    active = true; visible = true;
-  }
+	void suspend(){
+		active = false; visible = false;
+	}
 
-  void updateSprite() {}
-  void render(GraphicsContext gc) {}
-  
-  public BoundingBox getBoundingBox()
-	{
+	void resume(){
+		active = true; visible = true;
+	}
+
+	void updateSprite() {}
+	void render(GraphicsContext gc) {}
+
+	public BoundingBox getBoundingBox(){
 		double width = image.getWidth();
 		double height = image.getHeight();
 		double xoff = (width*(1.0f - MainGame.BBscale)/2.0f);
@@ -70,5 +61,4 @@ class Sprite
 		double bbh = (height*MainGame.BBscale);
 		return new BoundingBox(x+xoff, y+yoff, bbw, bbh);
 	}
-  
 }
