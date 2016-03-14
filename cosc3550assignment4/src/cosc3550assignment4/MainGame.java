@@ -37,7 +37,7 @@ public class MainGame extends Application{
 	Cat cat;
 	ArrayList<Cat> cats;
 	int level = 1;
-	int count = 100;	// invincibility time variable
+	int count = 67;	// invincibility time variable
 	
 	void initialize(){
 		cats = new ArrayList<Cat>();
@@ -89,10 +89,10 @@ public class MainGame extends Application{
 	private void update() {
 		// TODO Auto-generated method stub
 		mouse.move();
-		while(mouse.invulnerable){
+		if(mouse.invulnerable){
 			count--;
 			if(count == 0){
-				count = 100;
+				count = 67;
 				mouse.invulnerable = false;
 			}
 		}
