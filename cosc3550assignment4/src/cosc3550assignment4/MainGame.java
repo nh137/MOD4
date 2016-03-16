@@ -42,6 +42,7 @@ public class MainGame extends Application{
 	
 	void initialize(){
 		cats = new ArrayList<Cat>();
+		bullet = new Bullet();
 		mouse = new Mouse(bullet);
 		for(int i = 0; i < (level*2); i++){
 			cat = new Cat();
@@ -147,6 +148,8 @@ public class MainGame extends Application{
 		if(mouse.health == 0){
 			lostGame = true;
 		}
+		if (mouse.bullet.active)
+			mouse.bullet.updateSprite();
 	}
 	
 	/**
