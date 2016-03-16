@@ -36,13 +36,13 @@ public class MainGame extends Application{
 	Mouse mouse;
 	Cat cat;
 	ArrayList<Cat> cats;
-	ArrayList<Bullet> bullets;
+	Bullet bullet;
 	int level = 1;
 	int count = 67;	// invincibility time variable
 	
 	void initialize(){
 		cats = new ArrayList<Cat>();
-		mouse = new Mouse();
+		mouse = new Mouse(bullet);
 		for(int i = 0; i < (level*2); i++){
 			cat = new Cat();
 			cats.add(cat);
@@ -85,10 +85,15 @@ public class MainGame extends Application{
 					}
 				}
 		);
+		scene.setOnMousePressed(
+				e -> {
+					if (!bullet.isActive())
+						mouse.fireBullet();
+				}
+				);
 	}
 	
 	private void update() {
-		// TODO Auto-generated method stub
 		mouse.move();
 		if(mouse.invulnerable){
 			count--;

@@ -13,13 +13,16 @@ public class Mouse {
 	final static int WIDTH = 40;
 	final static int HEIGHT = 40;
 	final static int SPEED = 1;
+	
+	Bullet bullet;
 
-	public Mouse(){
+	public Mouse(Bullet b){
 		x = (int) (MainGame.WIDTH/2);
 		y = (int) (MainGame.HEIGHT/4);
 		vx = 0;
 		vy = 0;
 		health = 50;
+		bullet = b;
 	}
 
 	public void move(){
@@ -98,4 +101,11 @@ public class Mouse {
 	public void loseHealth(){
 		health--;
 	}
+	
+	public void fireBullet()
+	  {
+	    bullet.setPosition(x, y);
+	    bullet.setVelocity(0.0, -40.0);
+	    bullet.resume();
+	  }
 }
