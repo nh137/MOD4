@@ -36,6 +36,7 @@ public class MainGame extends Application{
 	Mouse mouse;
 	Cat cat;
 	ArrayList<Cat> cats;
+	ArrayList<Bullet> bullets;
 	int level = 1;
 	int count = 67;	// invincibility time variable
 	
