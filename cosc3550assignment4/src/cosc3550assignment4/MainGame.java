@@ -124,17 +124,17 @@ public class MainGame extends Application{
 					cats.get(i).loseHealth();
 					cats.get(j).loseHealth();
 				}
-				if(cats.get(i).health == 0){
-					cats.remove(i);
-				}
-				if(cats.get(j).health == 0){
-					cats.remove(j);
-				}
 			}
-			if(cats.get(i).health == 0){
+			/* if(cats.get(i).health == 0){
 				cats.remove(i);
-			}
+			} */
 		}
+		
+		for (int i = 0; i < cats.size(); i++)
+		if(cats.get(i).health == 0){
+			cats.remove(i);
+		}
+		
 		if(cats.isEmpty()){
 			level++;
 			for(int i = 0; i < (level*2); i++){
