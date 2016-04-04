@@ -20,10 +20,12 @@ import javafx.scene.image.Image;
 
 public class MainGame extends Application{
 	
+	static Image backgroundImage = new Image("background.png");
+	
 	final String appName = "Mouse Under Attack";
 	final int FPS = 30; // frames per second
-	final static double WIDTH = 800;
-	final static double HEIGHT = 600;
+	final static double WIDTH = backgroundImage.getWidth()*2;
+	final static double HEIGHT = backgroundImage.getHeight()*2;
 	public static final int DYING = 80;
 	public static float BBscale = 1.0f;
 	
@@ -164,8 +166,14 @@ public class MainGame extends Application{
 	 */
 	
 	void render(GraphicsContext gc) {
-		gc.setFill(Color.WHITE);
-		gc.fillRect(0.0, 0.0, WIDTH, HEIGHT);
+		//gc.setFill(Color.WHITE);
+		//gc.fillRect(0.0, 0.0, WIDTH, HEIGHT);
+		
+		//pictures of the background
+		gc.drawImage(backgroundImage, 0, 0);
+		gc.drawImage(backgroundImage, backgroundImage.getWidth(), 0);
+		gc.drawImage(backgroundImage, 0, backgroundImage.getHeight());
+		gc.drawImage(backgroundImage, backgroundImage.getWidth(), backgroundImage.getHeight());
 		mouse.render(gc);
 		for(int i = 0; i < cats.size(); i++){
 			cats.get(i).render(gc);
@@ -197,6 +205,7 @@ public class MainGame extends Application{
 	
 	@Override
 	public void start(Stage theStage) {
+		//backgroundImage = new Image("background.png");
 		theStage.setTitle(appName);
 
 		Group root = new Group();
