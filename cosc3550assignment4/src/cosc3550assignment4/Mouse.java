@@ -20,7 +20,7 @@ public class Mouse extends Sprite {
 	
 	Bullet bullet;
 
-	public Mouse(Image i, Bullet b){
+	public Mouse(Image i, Bullet b, Image hb){
 		super(i);
 		w = i.getWidth();
 		h = i.getHeight();
@@ -29,8 +29,9 @@ public class Mouse extends Sprite {
 		
 		//vx = 0;
 		//vy = 0;
-		health = 2;
+		health = 6;
 		bullet = b;
+		healthbar = new HealthBar(hb);
 	}
 
 	public void move(){
@@ -73,7 +74,7 @@ public class Mouse extends Sprite {
 		gc.setStroke(Color.BLACK);
 		BoundingBox bb = getBoundingBox();
 		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());
-		//healthbar.render(gc, health);
+		healthbar.render(gc, health);
 		
 		
 		/*if(!invulnerable){

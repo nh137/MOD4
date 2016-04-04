@@ -54,7 +54,7 @@ public class MainGame extends Application{
 		
 		cats = new ArrayList<Cat>();
 		bullet = new Bullet(bulletImage);
-		mouse = new Mouse(mouseImage, bullet);
+		mouse = new Mouse(mouseImage, bullet, healthImage);
 		for(int i = 0; i < (level*2); i++){
 			cat = new Cat(catImage);
 			cats.add(cat);
