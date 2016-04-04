@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 class Sprite{
 	double x,y;
 	double dx,dy;
-	public static final double GRAVITY = 2.0;
 
 	Image image;
 
@@ -17,7 +16,7 @@ class Sprite{
 		x += dx;
 		y += dy;
 
-		dy += GRAVITY;
+		//dy += GRAVITY;
 	}
 
 	void setPosition(double x2, double y2){
