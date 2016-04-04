@@ -17,6 +17,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
 
+/** Submission for Assignment 5, COSC3550
+ * 
+ * @author Nida Hafeez, Stephen Huelsman
+ *
+ */
 
 public class MainGame extends Application{
 	
@@ -24,7 +29,7 @@ public class MainGame extends Application{
 	
 	final String appName = "Mouse Under Attack";
 	final int FPS = 30; // frames per second
-	final static double WIDTH = backgroundImage.getWidth()*2;
+	final static double WIDTH = backgroundImage.getWidth()*3;
 	final static double HEIGHT = backgroundImage.getHeight()*2;
 	public static final int DYING = 80;
 	public static float BBscale = 1.0f;
@@ -130,6 +135,7 @@ public class MainGame extends Application{
 		for (int i = 0; i < cats.size(); i++){
 			if(cats.get(i).collision(mouse.bullet)){
 				cats.get(i).loseHealth();
+				System.out.println(cats.get(i).health);
 				mouse.bullet.suspend();
 			}
 			/*for (int j = 0; j < i; j++){
@@ -143,7 +149,7 @@ public class MainGame extends Application{
 		}
 		
 		for (int i = 0; i < cats.size(); i++)
-		if(cats.get(i).health == 0){
+		if(cats.get(i).health <= 0){
 			cats.remove(i);
 		}
 		
@@ -178,8 +184,10 @@ public class MainGame extends Application{
 		//pictures of the background
 		gc.drawImage(backgroundImage, 0, 0);
 		gc.drawImage(backgroundImage, backgroundImage.getWidth(), 0);
+		gc.drawImage(backgroundImage, backgroundImage.getWidth()*2, 0);
 		gc.drawImage(backgroundImage, 0, backgroundImage.getHeight());
 		gc.drawImage(backgroundImage, backgroundImage.getWidth(), backgroundImage.getHeight());
+		gc.drawImage(backgroundImage, backgroundImage.getWidth()*2, backgroundImage.getHeight());
 		mouse.render(gc);
 		bullet.render(gc);
 		for(int i = 0; i < cats.size(); i++){
