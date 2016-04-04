@@ -1,6 +1,7 @@
 package cosc3550assignment4;
 
 import java.util.Random;
+import javafx.scene.image.Image;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -10,14 +11,15 @@ public class Cat extends Sprite{
 	static Random rng = new Random();
 
 	int x, y;   // top-left corner
-	int w, h;   // width and height
+	double w, h;   // width and height
 	double vx, vy; // velocity vector
 	int health = 1;
 	int speed = 2;
 
-	public Cat(){
-		w = 60;
-		h = 60;
+	public Cat(Image i){
+		super(i);
+		w = i.getWidth();
+		h = i.getHeight();
 		vx = 2 + rng.nextInt(7);
 		if (rng.nextDouble() < 0.5)
 			vx = -vx;
@@ -45,13 +47,13 @@ public class Cat extends Sprite{
 	public boolean overlaps(Cat c){
 		int y1 = y;
 		int x1 = x;
-		int h1 = h;
-		int w1 = w;
+		double h1 = h;
+		double w1 = w;
 
 		int y2 = c.y;
 		int x2 = c.x;
-		int h2 = c.h;
-		int w2 = c.w;
+		double h2 = c.h;
+		double w2 = c.w;
 
 		if(y1 <= (y2+h2) && x2 <= (x1+w1) && y2 <=(y1+h1) && x1 <= (x2+w2)){
 			return true;
@@ -62,8 +64,8 @@ public class Cat extends Sprite{
 	public boolean overlaps(Mouse m){
 		int y1 = y;
 		int x1 = x;
-		int h1 = h;
-		int w1 = w;
+		double h1 = h;
+		double w1 = w;
 
 		int y2 = m.y;
 		int x2 = m.x;

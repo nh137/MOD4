@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.image.Image;
 
 
 public class MainGame extends Application{
@@ -25,6 +26,8 @@ public class MainGame extends Application{
 	final static double HEIGHT = 600;
 	public static final int DYING = 80;
 	public static float BBscale = 1.0f;
+	
+	Image catImage, mouseImage, bulletImage;
 	
 	GraphicsContext gc;
 	
@@ -41,11 +44,15 @@ public class MainGame extends Application{
 	int count = 67;	// invincibility time variable
 	
 	void initialize(){
+		//images
+		catImage = new Image("cat_100x71.png");
+		bulletImage = new Image("waterspray.png");
+		
 		cats = new ArrayList<Cat>();
-		bullet = new Bullet();
+		bullet = new Bullet(bulletImage);
 		mouse = new Mouse(bullet);
 		for(int i = 0; i < (level*2); i++){
-			cat = new Cat();
+			cat = new Cat(catImage);
 			cats.add(cat);
 		}	
 	}
@@ -138,7 +145,7 @@ public class MainGame extends Application{
 		if(cats.isEmpty()){
 			level++;
 			for(int i = 0; i < (level*2); i++){
-				cat = new Cat();
+				cat = new Cat(catImage);
 				cats.add(cat);
 			}
 		}

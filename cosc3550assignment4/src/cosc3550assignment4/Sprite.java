@@ -11,6 +11,10 @@ class Sprite{
 	Image image;
 
 	boolean active=false, visible=false;
+	
+	public Sprite(Image i) {
+		  image = i;
+	  }
 
 	void updatePosition(){
 		x += dx;
@@ -49,7 +53,10 @@ class Sprite{
 	}
 
 	void updateSprite() {}
-	void render(GraphicsContext gc) {}
+	void render(GraphicsContext gc) {
+		render(gc);
+		BoundingBox bb = getBoundingBox();
+	}
 
 	public BoundingBox getBoundingBox(){
 		double width = image.getWidth();
