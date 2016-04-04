@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 public class Mouse extends Sprite {
 	int x, y, vx, vy, health; 
 	double h, w;
+	HealthBar healthbar;
 	
 	boolean upKey = false, downKey = false, leftKey = false, rightKey = false;
 
@@ -72,6 +73,7 @@ public class Mouse extends Sprite {
 		gc.setStroke(Color.BLACK);
 		BoundingBox bb = getBoundingBox();
 		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());
+		//healthbar.render(gc, health);
 		
 		
 		/*if(!invulnerable){

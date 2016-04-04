@@ -29,7 +29,7 @@ public class MainGame extends Application{
 	public static final int DYING = 80;
 	public static float BBscale = 1.0f;
 	
-	Image catImage, mouseImage, bulletImage;
+	Image catImage, mouseImage, bulletImage, healthImage;
 	
 	GraphicsContext gc;
 	
@@ -50,6 +50,7 @@ public class MainGame extends Application{
 		catImage = new Image("cat_100x71.png");
 		bulletImage = new Image("waterspray.png");
 		mouseImage = new Image("mouse.jpg");
+		healthImage = new Image("cheese-xxl_35x35.png");
 		
 		cats = new ArrayList<Cat>();
 		bullet = new Bullet(bulletImage);
