@@ -127,7 +127,11 @@ public class MainGame extends Application{
 				}
 			}
 		}
-		for (int i = 1; i < cats.size(); i++){
+		for (int i = 0; i < cats.size(); i++){
+			if(cats.get(i).collision(mouse.bullet)){
+				cats.get(i).loseHealth();
+				mouse.bullet.suspend();
+			}
 			/*for (int j = 0; j < i; j++){
 				if(cats.get(i).collision(cats.get(j))){
 					cats.get(i).reverse();
@@ -142,6 +146,7 @@ public class MainGame extends Application{
 		if(cats.get(i).health == 0){
 			cats.remove(i);
 		}
+		
 		
 		if(cats.isEmpty()){
 			level++;

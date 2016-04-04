@@ -124,6 +124,7 @@ public class Mouse extends Sprite {
 	    bullet.setVelocity(0.0, -40.0);
 	    bullet.resume();
 	  }
+	
 	public BoundingBox getBoundingBox(){
 		double width = image.getWidth();
 		double height = image.getHeight();
