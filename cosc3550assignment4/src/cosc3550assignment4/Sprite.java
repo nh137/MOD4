@@ -10,7 +10,7 @@ class Sprite{
 
 	Image image;
 
-	boolean active=false, visible=false;
+	boolean active=true, visible=true;
 	
 	public Sprite(Image i) {
 		  image = i;

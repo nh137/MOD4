@@ -85,8 +85,9 @@ public class Cat extends Sprite{
 	}
 
 	public void render(GraphicsContext gc){
-		gc.setFill(Color.BLACK);
-		gc.fillRect(x,  y,  w,  h);
+		if (visible) {
+			gc.drawImage(image, x, y);
+		}
 	}
 	
 	public void loseHealth(){
