@@ -2,10 +2,12 @@ package cosc3550assignment4;
 
 import javafx.scene.paint.Color;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
-public class Mouse {
+public class Mouse extends Sprite {
 	int x, y, vx, vy, health; 
-
+	double h, w;
+	
 	boolean upKey = false, downKey = false, leftKey = false, rightKey = false;
 
 	public boolean invulnerable = false;
@@ -16,9 +18,13 @@ public class Mouse {
 	
 	Bullet bullet;
 
-	public Mouse(Bullet b){
+	public Mouse(Image i, Bullet b){
+		super(i);
+		w = i.getWidth();
+		h = i.getHeight();
 		x = (int) (MainGame.WIDTH/2);
-		y = (int) (MainGame.HEIGHT/4);
+		y = (int) (MainGame.HEIGHT/2);
+		
 		//vx = 0;
 		//vy = 0;
 		health = 50;
@@ -59,14 +65,19 @@ public class Mouse {
 	}
 
 	public void render(GraphicsContext gc){
-		if(!invulnerable){
+		if (visible) {
+			gc.drawImage(image, x, y);
+		}
+		
+		
+		/*if(!invulnerable){
 			gc.setFill(Color.BLUE);
 			gc.fillRect(x, y, WIDTH, HEIGHT);
 		}
 		else{
 			gc.setFill(Color.RED);
 			gc.fillRect(x, y, WIDTH, HEIGHT);
-		}
+		}*/
 		
 	}
 

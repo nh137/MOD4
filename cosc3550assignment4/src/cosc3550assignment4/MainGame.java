@@ -47,10 +47,11 @@ public class MainGame extends Application{
 		//images
 		catImage = new Image("cat_100x71.png");
 		bulletImage = new Image("waterspray.png");
+		mouseImage = new Image("mouse.jpg");
 		
 		cats = new ArrayList<Cat>();
 		bullet = new Bullet(bulletImage);
-		mouse = new Mouse(bullet);
+		mouse = new Mouse(mouseImage, bullet);
 		for(int i = 0; i < (level*2); i++){
 			cat = new Cat(catImage);
 			cats.add(cat);
@@ -125,7 +126,7 @@ public class MainGame extends Application{
 		}
 		for (int i = 0; i < cats.size(); i++){
 			for (int j = 0; j < i; j++){
-				if(cats.get(i).overlaps(cats.get(j))){
+				if(cats.get(i).collision(cats.get(j))){
 					cats.get(i).reverse();
 					cats.get(j).reverse();
 					cats.get(i).loseHealth();
