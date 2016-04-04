@@ -3,6 +3,7 @@ package cosc3550assignment4;
 import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 class Sprite{
 	double x,y;
@@ -56,7 +57,9 @@ class Sprite{
 	
 	void render(GraphicsContext gc) {
 		render(gc);
+		gc.setStroke(Color.BLACK);
 		BoundingBox bb = getBoundingBox();
+		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());
 	}
 
 	public BoundingBox getBoundingBox(){

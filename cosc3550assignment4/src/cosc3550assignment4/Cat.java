@@ -1,8 +1,9 @@
 package cosc3550assignment4;
 
 import java.util.Random;
-import javafx.scene.image.Image;
 
+import javafx.geometry.BoundingBox;
+import javafx.scene.image.Image;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -88,6 +89,9 @@ public class Cat extends Sprite{
 		if (visible) {
 			gc.drawImage(image, x, y);
 		}
+		gc.setStroke(Color.BLACK);
+		BoundingBox bb = getBoundingBox();
+		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());
 	}
 	
 	public void loseHealth(){
@@ -101,6 +105,21 @@ public class Cat extends Sprite{
 		double len = Math.sqrt(vx*vx+vy*vy);
 		this.vx = vx*speed/len;
 		this.vy =  vy*speed/len;
+	}
+	
+	public BoundingBox getBoundingBox(){
+		double width = image.getWidth();
+		double height = image.getHeight();
+		double xoff = (width*(1.0f - MainGame.BBscale)/2.0f);
+		double yoff = (height*(1.0f - MainGame.BBscale)/2.0f);
+		double bbw = (width*MainGame.BBscale);
+		double bbh = (height*MainGame.BBscale);
+		return new BoundingBox(x+xoff, y+yoff, bbw, bbh);
+	}
+	
+	public boolean collision(Sprite h){
+		BoundingBox bb = getBoundingBox();
+		return bb.intersects(h.getBoundingBox());
 	}
 }
 

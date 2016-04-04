@@ -116,7 +116,7 @@ public class MainGame extends Application{
 		for(int i = 0; i < cats.size(); i++){
 			cats.get(i).move();
 			cats.get(i).headTo(mouse);
-			if(cats.get(i).overlaps(mouse)){
+			if(cats.get(i).collision(mouse)){
 				if(!mouse.invulnerable){
 					mouse.invulnerable = true;
 					mouse.loseHealth();
@@ -126,18 +126,15 @@ public class MainGame extends Application{
 				}
 			}
 		}
-		for (int i = 0; i < cats.size(); i++){
-			for (int j = 0; j < i; j++){
+		for (int i = 1; i < cats.size(); i++){
+			/*for (int j = 0; j < i; j++){
 				if(cats.get(i).collision(cats.get(j))){
 					cats.get(i).reverse();
 					cats.get(j).reverse();
 					cats.get(i).loseHealth();
 					cats.get(j).loseHealth();
 				}
-			}
-			/* if(cats.get(i).health == 0){
-				cats.remove(i);
-			} */
+			}*/
 		}
 		
 		for (int i = 0; i < cats.size(); i++)
