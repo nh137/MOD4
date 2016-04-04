@@ -12,38 +12,38 @@ public class Mouse {
 
 	final static int WIDTH = 40;
 	final static int HEIGHT = 40;
-	final static int SPEED = 1;
+	final static int SPEED = 5;
 	
 	Bullet bullet;
 
 	public Mouse(Bullet b){
 		x = (int) (MainGame.WIDTH/2);
 		y = (int) (MainGame.HEIGHT/4);
-		vx = 0;
-		vy = 0;
+		//vx = 0;
+		//vy = 0;
 		health = 50;
 		bullet = b;
 	}
 
 	public void move(){
-		x += vx;
-		y += vy;
 		if (upKey && getTop()>0)
-			vy -= SPEED;
+			y -= SPEED;
 		if (downKey && getBottom()<MainGame.HEIGHT)
-			vy += SPEED;
+			y += SPEED;
 		if(leftKey && (getX()-(WIDTH/2))>0)
-			vx -= SPEED;
+			x -= SPEED;
 		if(rightKey && (getX()+(WIDTH/2))<MainGame.WIDTH)
-			vx += SPEED;
+			x += SPEED;
 		if (x < 0)
-			vx = -vx;
+			//vx = -vx;
 		if (x+WIDTH > MainGame.WIDTH)
-			vx = -vx;
+			//vx = -vx;
 		if (y < 0)
-			vy = -vy;
-		if(y+HEIGHT > MainGame.HEIGHT)
-			vy = -vy;
+			//vy = -vy;
+		if(y+HEIGHT > MainGame.HEIGHT){
+		
+		}
+			/*vy = -vy;*/
 	}
 
 	public void reset(){

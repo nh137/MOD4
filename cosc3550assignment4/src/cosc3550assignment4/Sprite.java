@@ -53,6 +53,7 @@ class Sprite{
 	}
 
 	void updateSprite() {}
+	
 	void render(GraphicsContext gc) {
 		render(gc);
 		BoundingBox bb = getBoundingBox();
@@ -66,5 +67,10 @@ class Sprite{
 		double bbw = (width*MainGame.BBscale);
 		double bbh = (height*MainGame.BBscale);
 		return new BoundingBox(x+xoff, y+yoff, bbw, bbh);
+	}
+	
+	public boolean collision(Sprite h){
+		BoundingBox bb = getBoundingBox();
+		return bb.intersects(h.getBoundingBox());
 	}
 }
