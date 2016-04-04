@@ -158,6 +158,8 @@ public class MainGame extends Application{
 		}
 		if (mouse.bullet.active)
 			mouse.bullet.updateSprite();
+		if (mouse.bullet.active && bullet.y < 0)
+			mouse.bullet.suspend();
 	}
 	
 	/**
@@ -174,6 +176,7 @@ public class MainGame extends Application{
 		gc.drawImage(backgroundImage, 0, backgroundImage.getHeight());
 		gc.drawImage(backgroundImage, backgroundImage.getWidth(), backgroundImage.getHeight());
 		mouse.render(gc);
+		bullet.render(gc);
 		for(int i = 0; i < cats.size(); i++){
 			cats.get(i).render(gc);
 		}

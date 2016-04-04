@@ -68,9 +68,7 @@ public class Mouse extends Sprite {
 	}
 
 	public void render(GraphicsContext gc){
-		if (visible) {
-			gc.drawImage(image, x, y);
-		}
+		gc.drawImage(image, x, y);
 		gc.setStroke(Color.BLACK);
 		BoundingBox bb = getBoundingBox();
 		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());

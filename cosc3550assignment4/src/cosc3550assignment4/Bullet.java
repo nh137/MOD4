@@ -28,8 +28,7 @@ class Bullet extends Sprite
   {
     if (visible)
     {
-      gc.setFill(color);
-      gc.fillOval(x-RADIUS, y-RADIUS, 2*RADIUS, 2*RADIUS);
+    	gc.drawImage(image, x, y);
     }
   }
 }

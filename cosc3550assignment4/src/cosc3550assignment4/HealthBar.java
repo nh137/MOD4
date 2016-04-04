@@ -11,9 +11,7 @@ public class HealthBar extends Sprite{
 	}
 	
 	public void render(GraphicsContext gc, int health){
-		if (visible) {
 			for (int i = 0; i < health; i++)
 				gc.drawImage(image, i*this.image.getWidth(), 0);
-		}
 	}
 }
