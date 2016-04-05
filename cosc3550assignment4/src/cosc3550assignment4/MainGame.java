@@ -54,7 +54,7 @@ public class MainGame extends Application{
 		//images
 		catImage = new Image("cat_100x71.png");
 		bulletImage = new Image("waterspray.png");
-		mouseImage = new Image("mouse_100x113.png");
+		mouseImage = new Image("mouse-311207_960_720_103x120.png");
 		healthImage = new Image("cheese-xxl_35x35.png");
 		
 		cats = new ArrayList<Cat>();
