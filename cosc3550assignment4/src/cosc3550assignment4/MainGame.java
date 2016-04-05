@@ -54,7 +54,7 @@ public class MainGame extends Application{
 		//images
 		catImage = new Image("cat_100x71.png");
 		bulletImage = new Image("waterspray.png");
-		mouseImage = new Image("mouse.jpg");
+		mouseImage = new Image("mouse_100x113.png");
 		healthImage = new Image("cheese-xxl_35x35.png");
 		
 		cats = new ArrayList<Cat>();
@@ -135,7 +135,6 @@ public class MainGame extends Application{
 		for (int i = 0; i < cats.size(); i++){
 			if(cats.get(i).collision(mouse.bullet)){
 				cats.get(i).loseHealth();
-				System.out.println(cats.get(i).health);
 				mouse.bullet.suspend();
 			}
 			/*for (int j = 0; j < i; j++){
@@ -161,15 +160,15 @@ public class MainGame extends Application{
 				cats.add(cat);
 			}
 		}
-		if(level == 4){
+		if(level == 4 && !lostGame){
 			wonGame = true;
 		}
-		if(mouse.health == 0){
+		if(mouse.health == 0 && !wonGame){
 			lostGame = true;
 		}
 		if (mouse.bullet.active)
 			mouse.bullet.updateSprite();
-		if (mouse.bullet.active && bullet.y < 0)
+		if (mouse.bullet.active && bullet.y > HEIGHT)
 			mouse.bullet.suspend();
 	}
 	

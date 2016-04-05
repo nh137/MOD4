@@ -25,7 +25,7 @@ public class Mouse extends Sprite {
 		w = i.getWidth();
 		h = i.getHeight();
 		x = (int) (MainGame.WIDTH/2);
-		y = (int) (MainGame.HEIGHT/2);
+		y = (int) (MainGame.HEIGHT/8);
 		
 		//vx = 0;
 		//vy = 0;
@@ -69,9 +69,6 @@ public class Mouse extends Sprite {
 
 	public void render(GraphicsContext gc){
 		gc.drawImage(image, x, y);
-		gc.setStroke(Color.BLACK);
-		BoundingBox bb = getBoundingBox();
-		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());
 		healthbar.render(gc, health);
 		
 		
@@ -121,7 +118,7 @@ public class Mouse extends Sprite {
 	public void fireBullet()
 	  {
 	    bullet.setPosition(x, y);
-	    bullet.setVelocity(0.0, -40.0);
+	    bullet.setVelocity(0.0, 20.0);
 	    bullet.resume();
 	  }
 	

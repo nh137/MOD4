@@ -27,9 +27,6 @@ class Bullet extends Sprite
 
   void render(GraphicsContext gc)
   {
-	  gc.setStroke(Color.BLACK);
-		BoundingBox bb = getBoundingBox();
-		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());
     if (visible)
     {
     	gc.drawImage(image, x, y);

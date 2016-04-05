@@ -29,7 +29,7 @@ public class Cat extends Sprite{
 			vy = -vy;
 		// Choose random position on the Canvas
 		x = 5 + rng.nextInt((int) (MainGame.WIDTH - w - 10));
-		y = 5 + rng.nextInt((int) (MainGame.HEIGHT - h - 10));
+		y = 100 + rng.nextInt((int) (MainGame.HEIGHT - h - 10));
 	}
 
 	public void move(){
@@ -87,9 +87,6 @@ public class Cat extends Sprite{
 
 	public void render(GraphicsContext gc){
 		gc.drawImage(image, x, y);
-		gc.setStroke(Color.BLACK);
-		BoundingBox bb = getBoundingBox();
-		gc.strokeRect(bb.getMinX(), bb.getMinY(), bb.getWidth()  , bb.getHeight());
 	}
 	
 	public void loseHealth(){
